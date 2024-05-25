@@ -6,6 +6,11 @@ import SplitType from "split-type";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 /**
+ * Postprocessing
+ */
+// import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+
+/**
  * Loaders
  */
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
@@ -20,6 +25,14 @@ import { SimplexNoise } from "three/examples/jsm/math/SimplexNoise";
  */
 import { GooCursor } from "./cursor.js";
 import gsap from "gsap";
+import {
+  DotScreenPass,
+  GlitchPass,
+  RGBShiftShader,
+  RenderPass,
+  ShaderPass,
+  UnrealBloomPass,
+} from "three/examples/jsm/Addons.js";
 
 /**
  * Base
@@ -205,7 +218,7 @@ scene.fog = new THREE.Fog("rgb(28, 28, 28)", 1.3, 2.1);
  */
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
-  antialias: true,
+  antialias: false,
   // powerPreference: "high-performance",
 });
 renderer.setClearColor("rgb(28, 28, 28)");
@@ -217,14 +230,17 @@ renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1;
 
-// Ground projected skybox
-// rgbeLoader.load("/environmentMaps/0/2k.hdr", (environmentMap) => {
-// environmentMap.mapping = THREE.EquirectangularReflectionMapping;
-// environmentMap.magFilter = THREE.LinearFilter; // Optional: adjusts filtering
-// environmentMap.minFilter = THREE.LinearMipmapLinearFilter; // Optional: adjusts filtering
-// scene.environment = environmentMap;
-// environmentMap.dispose();
-// });
+/**
+ *  PostProcessing
+ */
+// const effectComposer = new EffectComposer(renderer);
+// effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+// effectComposer.setSize(sizes.width, sizes.height);
+// const renderPass = new RenderPass(scene, camera);
+// effectComposer.addPass(renderPass);
+
+// const screenPass = new UnrealBloomPass();
+// effectComposer.addPass(screenPass);
 
 /**
  * Raycaster
@@ -348,6 +364,7 @@ const tick = () => {
 
   // Render
   renderer.render(scene, camera);
+  // effectComposer.render();
 
   // Call tick again on the next frame
   window.requestAnimationFrame(tick);
