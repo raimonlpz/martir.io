@@ -1,11 +1,11 @@
 @font-face {
   font-family: "Heming";
-  src: url("fonts/Unnamed-Light.eot");
-  src: url("fonts/Unnamed-Light.eot?#iefix") format("embedded-opentype"),
-    url("fonts/Unnamed-Light.woff2") format("woff2"),
-    url("fonts/Unnamed-Light.woff") format("woff"),
-    url("fonts/Unnamed-Light.ttf") format("truetype"),
-    url("fonts/Unnamed-Light.svg#Unnamed-Light") format("svg");
+  src: url("/fonts/Unnamed-Light.eot");
+  src: url("/fonts/Unnamed-Light.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/Unnamed-Light.woff2") format("woff2"),
+    url("/fonts/Unnamed-Light.woff") format("woff"),
+    url("/fonts/Unnamed-Light.ttf") format("truetype"),
+    url("/fonts/Unnamed-Light.svg#Unnamed-Light") format("svg");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -13,12 +13,12 @@
 
 @font-face {
   font-family: "Lexa";
-  src: url("fonts/Lexa.eot");
-  src: url("fonts/Lexa.eot?#iefix") format("embedded-opentype"),
-    url("fonts/Lexa.woff2") format("woff2"),
-    url("fonts/Lexa.woff") format("woff"),
-    url("fonts/Lexa.ttf") format("truetype"),
-    url("fonts/Lexa.svg#Lexa") format("svg");
+  src: url("/fonts/Lexa.eot");
+  src: url("/fonts/Lexa.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/Lexa.woff2") format("woff2"),
+    url("/fonts/Lexa.woff") format("woff"),
+    url("/fonts/Lexa.ttf") format("truetype"),
+    url("/fonts/Lexa.svg#Lexa") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -26,13 +26,13 @@
 
 @font-face {
   font-family: "Colony";
-  src: url("fonts/TCNewWorthOneTrialVersion-Reg.eot");
-  src: url("fonts/TCNewWorthOneTrialVersion-Reg.eot?#iefix")
+  src: url("/fonts/TCNewWorthOneTrialVersion-Reg.eot");
+  src: url("/fonts/TCNewWorthOneTrialVersion-Reg.eot?#iefix")
       format("embedded-opentype"),
-    url("fonts/TCNewWorthOneTrialVersion-Reg.woff2") format("woff2"),
-    url("fonts/TCNewWorthOneTrialVersion-Reg.woff") format("woff"),
-    url("fonts/TCNewWorthOneTrialVersion-Reg.ttf") format("truetype"),
-    url("fonts/TCNewWorthOneTrialVersion-Reg.svg#TCNewWorthOneTrialVersion-Reg")
+    url("/fonts/TCNewWorthOneTrialVersion-Reg.woff2") format("woff2"),
+    url("/fonts/TCNewWorthOneTrialVersion-Reg.woff") format("woff"),
+    url("/fonts/TCNewWorthOneTrialVersion-Reg.ttf") format("truetype"),
+    url("/fonts/TCNewWorthOneTrialVersion-Reg.svg#TCNewWorthOneTrialVersion-Reg")
       format("svg");
   font-weight: normal;
   font-style: normal;
