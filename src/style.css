@@ -27,7 +27,7 @@
 }
 
 :root {
-  --columns: 25;
+  --columns: 40;
   --color-text: #fff;
   --color-bg: #000;
   --color-link: #9fdee9;
@@ -46,6 +46,7 @@
 
 html {
   overscroll-behavior: none;
+  scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
@@ -63,6 +64,16 @@ body {
 
 body {
   cursor: none;
+}
+
+a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit color from parent element */
+  background-color: transparent; /* Remove background color */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+  border: none; /* Remove border */
+  outline: none; /* Remove outline */
 }
 
 /**
@@ -111,17 +122,22 @@ Section #1 - Home
   display: flex;
   justify-content: space-evenly;
   text-transform: uppercase;
+  display: inline-flex;
+  align-items: baseline;
+  line-height: 1;
 }
 
 .letters > div {
   flex: 1;
   font-size: 8vw;
   text-align: center;
+  vertical-align: baseline;
 }
 
 .letters div span {
   font-family: Lexa;
   font-size: 7vw;
+  vertical-align: baseline;
 }
 
 .section--one span {

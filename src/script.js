@@ -9,12 +9,12 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
  * Loaders
  */
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
+// import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 
 /**
  * Env Maps +   3D Libs
  */
-import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
+// import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 import { SimplexNoise } from "three/examples/jsm/math/SimplexNoise";
 
 /**
@@ -38,7 +38,7 @@ const scene = new THREE.Scene();
 /**
  * Loaders
  */
-const rgbeLoader = new RGBELoader();
+// const rgbeLoader = new RGBELoader();
 // const dracoLoader = new DRACOLoader();
 const gltfLoader = new GLTFLoader();
 
@@ -239,8 +239,8 @@ const renderer = new THREE.WebGLRenderer({
   powerPreference: "high-performance",
 });
 renderer.setClearColor("rgb(28, 28, 28)");
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.shadowMap.enabled = false;
+// renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.outputEncoding = THREE.sRGBEncoding;
@@ -387,14 +387,10 @@ tick();
  * Sound
  */
 document.addEventListener("DOMContentLoaded", (event) => {
-  const audioEl = new Audio("/sound/robot.mp3");
+  const audioEl = new Audio("/sound/grips.mp3");
   audioEl.play();
-  audioEl.volume = 0.01;
+  audioEl.volume = 1;
   audioEl.loop = true;
-  const audioEl2 = new Audio("/sound/schizo.mp3");
-  audioEl2.play();
-  audioEl2.volume = 0.2;
-  audioEl2.loop = true;
 });
 
 /**
