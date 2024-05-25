@@ -8,12 +8,13 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 /**
  * Postprocessing
  */
-// import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 
 /**
  * Loaders
  */
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 
 /**
  *  3D Libs
@@ -25,14 +26,7 @@ import { SimplexNoise } from "three/examples/jsm/math/SimplexNoise";
  */
 import { GooCursor } from "./cursor.js";
 import gsap from "gsap";
-import {
-  DotScreenPass,
-  GlitchPass,
-  RGBShiftShader,
-  RenderPass,
-  ShaderPass,
-  UnrealBloomPass,
-} from "three/examples/jsm/Addons.js";
+import { RenderPass, UnrealBloomPass } from "three/examples/jsm/Addons.js";
 
 /**
  * Base
@@ -47,11 +41,73 @@ const canvas = document.querySelector("canvas.webgl");
 const scene = new THREE.Scene();
 
 /**
+ * Overlay
+ */
+const overlayGeometry = new THREE.PlaneGeometry(2, 2, 1, 1);
+const overlayMaterial = new THREE.ShaderMaterial({
+  transparent: true,
+  uniforms: {
+    uAlpha: { value: 0.1098 },
+  },
+  vertexShader: `
+    void main()
+    {
+      gl_Position = vec4(position, 1.0);
+    }
+  `,
+  fragmentShader: `
+    uniform float uAlpha;
+    void main()
+    {
+      gl_FragColor = vec4(0.0, 0.0, 0.0, uAlpha);
+    }
+  `,
+});
+const overlay = new THREE.Mesh(overlayGeometry, overlayMaterial);
+scene.add(overlay);
+
+/**
+ * Hide HTML DOM elements
+ */
+const loadingPEl = document.querySelector(".loading-progress");
+const loadingBarEl = document.querySelector(".loading-bar");
+const overlayDOM = document.querySelector(".overlay");
+overlayDOM.style.opacity = 1;
+
+/**
  * Loaders
  */
-// const rgbeLoader = new RGBELoader();
-// const dracoLoader = new DRACOLoader();
-const gltfLoader = new GLTFLoader();
+const loadingManager = new THREE.LoadingManager(
+  (e) => {
+    gsap.delayedCall(0.5, () => {
+      gsap
+        .to(overlayMaterial.uniforms.uAlpha, { duration: 1, value: 0 })
+        .then(() => {
+          loadingPEl.classList.add("ended");
+          loadingBarEl.classList.add("ended");
+          loadingBarEl.style.transform = "";
+
+          setTimeout(() => {
+            overlayDOM.style.opacity = 0;
+            document.body.style.overflowY = "scroll";
+            scene.remove(overlay);
+          }, 1000);
+        });
+    });
+  },
+  (itemUrl, itemsLoaded, itemsTotal) => {
+    const progressRatio = itemsLoaded / itemsTotal;
+    loadingPEl.innerHTML = `${Math.round(progressRatio * 100)}%`;
+    loadingBarEl.style.transform = `scaleX(${progressRatio})`;
+  }
+);
+
+const gltfLoader = new GLTFLoader(loadingManager);
+const dracoLoader = new DRACOLoader(loadingManager);
+const textureLoader = new THREE.TextureLoader(loadingManager);
+
+dracoLoader.setDecoderPath("/draco/");
+gltfLoader.setDRACOLoader(dracoLoader);
 
 /**
  * Environment map
@@ -59,8 +115,6 @@ const gltfLoader = new GLTFLoader();
 scene.environmentIntensity = 1;
 scene.backgroundBlurriness = 0;
 scene.backgroundIntensity = 1;
-// scene.backgroundRotation.x = 1
-// scene.environmentRotation.x = 2
 
 gui.add(scene, "environmentIntensity").min(0).max(10).step(0.001);
 gui.add(scene, "backgroundBlurriness").min(0).max(1).step(0.001);
@@ -82,21 +136,17 @@ gui.hide();
 /**
  * Models
  */
-// dracoLoader.setDecoderPath("/draco/");
-// gltfLoader.setDRACOLoader(dracoLoader);
 
-const sectionMeshes = [];
 const objectsDistance = 4;
 let _latexSunglasses, _latexGloves, _latexMask, _latexGlass;
 
-gltfLoader.load("/models/Latex_Sunglasses/scene.gltf", (gltf) => {
+gltfLoader.load("/models/Latex_Sunglasses/scene-min.gltf", (gltf) => {
   gltf.scene.scale.set(1.225, 1.225, 1.225);
   gltf.scene.position.x = 0.2;
   gltf.scene.position.z = 0.35;
   gltf.scene.rotation.y = Math.PI / 3.8;
   _latexSunglasses = gltf.scene;
   _latexSunglasses.position.y = -objectsDistance * 0 + 1;
-  sectionMeshes.push(_latexSunglasses);
   scene.add(_latexSunglasses);
 });
 
@@ -108,11 +158,10 @@ gltfLoader.load("/models/Latex_Gloves/scene.gltf", (gltf) => {
   gltf.scene.rotation.y = Math.PI / 2;
   _latexGloves = gltf.scene;
   _latexGloves.position.y = -objectsDistance * 5.5;
-  sectionMeshes.push(_latexGloves);
   scene.add(_latexGloves);
 });
 
-gltfLoader.load("/models/Latex_Mask/scene.gltf", (gltf) => {
+gltfLoader.load("/models/Latex_Mask/scene-min.gltf", (gltf) => {
   gltf.scene.scale.set(2.125, 2.125, 2.125);
   gltf.scene.position.x = 2;
   gltf.scene.position.z = 2.15;
@@ -120,11 +169,10 @@ gltfLoader.load("/models/Latex_Mask/scene.gltf", (gltf) => {
 
   _latexMask = gltf.scene;
   _latexMask.position.y = -objectsDistance * 6;
-  sectionMeshes.push(_latexMask);
   scene.add(_latexMask);
 });
 
-gltfLoader.load("/models/Latex_Glass/scene.gltf", (gltf) => {
+gltfLoader.load("/models/Latex_Glass/scene-min.gltf", (gltf) => {
   gltf.scene.scale.set(2.225, 2.225, 2.225);
   gltf.scene.position.x = 5;
   gltf.scene.position.y = 8;
@@ -133,7 +181,6 @@ gltfLoader.load("/models/Latex_Glass/scene.gltf", (gltf) => {
 
   _latexGlass = gltf.scene;
   _latexGlass.position.y = -objectsDistance * 10;
-  sectionMeshes.push(_latexGlass);
   scene.add(_latexGlass);
 });
 
@@ -227,20 +274,24 @@ renderer.shadowMap.enabled = false;
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.outputEncoding = THREE.sRGBEncoding;
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMapping = THREE.NoToneMapping;
 renderer.toneMappingExposure = 1;
 
 /**
  *  PostProcessing
  */
-// const effectComposer = new EffectComposer(renderer);
-// effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-// effectComposer.setSize(sizes.width, sizes.height);
-// const renderPass = new RenderPass(scene, camera);
-// effectComposer.addPass(renderPass);
+const effectComposer = new EffectComposer(renderer);
+effectComposer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+effectComposer.setSize(sizes.width, sizes.height);
+const renderPass = new RenderPass(scene, camera);
+effectComposer.addPass(renderPass);
 
-// const screenPass = new UnrealBloomPass();
-// effectComposer.addPass(screenPass);
+const screenPass = new UnrealBloomPass();
+screenPass.strength = 0.3;
+screenPass.radius = 1;
+screenPass.threshold = 0.6;
+screenPass.enabled = false;
+effectComposer.addPass(screenPass);
 
 /**
  * Raycaster
@@ -262,7 +313,6 @@ window.addEventListener("mousemove", (event) => {
 /**
  * Textures
  */
-const textureLoader = new THREE.TextureLoader();
 const particleTexture = textureLoader.load("/textures/particles/5.png");
 
 /**
@@ -364,7 +414,7 @@ const tick = () => {
 
   // Render
   renderer.render(scene, camera);
-  // effectComposer.render();
+  effectComposer.render();
 
   // Call tick again on the next frame
   window.requestAnimationFrame(tick);
