@@ -1,0 +1,275 @@
+@font-face {
+  font-family: "Heming";
+  src: url("fonts/Heming.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lexa";
+  src: url("fonts/Lexa.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Swiss";
+  src: url("fonts/SwissGrit.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --columns: 25;
+  --color-text: #fff;
+  --color-bg: #000;
+  --color-link: #9fdee9;
+  --color-link-hover: #fff;
+  --cursor-bg: #ffffff;
+  --cursor-blend-mode: exclusion;
+  --gradient-text-1: #aedfea;
+  --gradient-text-2: rgb(253 235 188);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overscroll-behavior: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html,
+body {
+  /* overflow: hidden; */
+  font-family: Lexa;
+  color: transparent;
+  background-color: rgb(28, 28, 28);
+  overflow-x: hidden;
+}
+
+body {
+  cursor: none;
+}
+
+/**
+ThreeJS
+*/
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* width: 100vw;
+  height: 100vh; */
+  outline: none;
+}
+
+/**
+HTML DOM
+*/
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+  padding-left: 10%;
+  padding-right: 10%;
+  /* border: 2px solid white; */
+}
+
+/**
+Section #1 - Home
+*/
+.section--one {
+  font-size: 100px;
+  color: whitesmoke;
+  font-weight: lighter;
+  opacity: 0.87;
+  mix-blend-mode: lighten;
+  pointer-events: none;
+  filter: invert(10%);
+  margin-left: 12vw;
+  margin-right: 12vw;
+  position: fixed;
+}
+.letters {
+  flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+  text-transform: uppercase;
+}
+
+.letters > div {
+  flex: 1;
+  font-size: 8vw;
+  text-align: center;
+}
+
+.section--one span {
+  /* font-family: Heming;
+  font-size: 140px; */
+}
+
+/**
+Section #2 - Home
+*/
+.section--two {
+  height: 200vw;
+}
+.section--two p {
+  color: white;
+  font-size: 0.75rem;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  opacity: 0.75;
+  text-align: center;
+}
+
+.section--two p:nth-child(1) {
+  width: 30vw;
+  margin: 2rem;
+}
+.section--two p:nth-child(2) {
+  margin: 2rem;
+  margin-top: 15rem;
+  width: 30vw;
+}
+.section--two p:nth-child(3) {
+  margin: 2rem;
+  margin-top: 35rem;
+  width: 30vw;
+}
+
+/**
+Section #3 - Home
+*/
+.section--three {
+  height: 200vw;
+}
+
+.section--three p {
+  color: white;
+  font-size: 0.75rem;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  opacity: 0.75;
+  text-align: justify;
+}
+
+.section--three p:nth-child(1) {
+  width: 40vw;
+  margin: 2rem;
+}
+.section--three p:nth-child(2) {
+  margin: 2rem;
+  margin-top: 30rem;
+  width: 40vw;
+}
+
+/**
+Section #4 - Home
+*/
+.section--four {
+  height: 150vw;
+}
+
+.section--four p {
+  color: white;
+  font-size: 0.75rem;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  opacity: 0.75;
+  text-align: justify;
+  align-self: end;
+  margin-bottom: 50vh;
+}
+/**
+Header
+*/
+.header {
+  position: fixed;
+  width: calc(100% - 2rem);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  left: 0;
+  top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  color: whitesmoke;
+  pointer-events: auto;
+}
+
+/**
+Footer
+*/
+.footer {
+  position: fixed;
+  display: flex;
+  width: calc(100% - 2rem);
+  justify-content: space-between;
+  bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  color: whitesmoke;
+  pointer-events: auto;
+}
+
+.header div,
+.footer div {
+  font-size: 0.9rem;
+  font-family: Heming;
+  text-transform: uppercase;
+}
+
+.header div {
+  width: 33.3333%;
+}
+
+.header div:nth-child(1) {
+  text-align: start;
+}
+.header div:nth-child(2) {
+  text-align: center;
+}
+.header div:nth-child(3) {
+  text-align: end;
+}
+
+.text-hover-effect:hover {
+  cursor: pointer;
+}
+
+/** Cursor
+*/
+.cursor {
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 99;
+  mix-blend-mode: var(--cursor-blend-mode);
+  --size: calc(100vw / var(--columns));
+}
+
+.cursor__inner {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), var(--size));
+}
+
+.cursor__inner-box {
+  width: var(--size);
+  height: var(--size);
+  background: var(--cursor-bg);
+  opacity: 0;
+  border-radius: var(--cursor-radius);
+}

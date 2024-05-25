@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&#9878; Martirio &#9878;</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body id="content">
+    <canvas class="webgl"></canvas>
+    <section class="section section--one">
+      <div class="letters">
+        <div>M</div>
+        <div>a</div>
+        <div>r</div>
+        <div>t</div>
+      </div>
+      <div class="letters">
+        <div>i</div>
+        <div>r</div>
+        <div><span>i</span></div>
+        <div><span>o</span></div>
+      </div>
+    </section>
+
+    <section class="section section--two anchor">
+      <p class="word">Infinite Code Machines</p>
+      <p class="word">Web Accelerationists</p>
+      <p class="word">Lysergic UX/UI Design</p>
+    </section>
+
+    <section class="section section--three">
+      <p class="word">
+        Welcome to our CRYPTIC WORLD, where pixels dance to the rhythm of code,
+        and user interfaces transcend the mundane. We are <i>Martirio</i>,
+        pioneers of web accelerationism, sculptors of lysergic user experiences,
+        and architects of infinite code machines.
+      </p>
+      <p class="word">
+        We engineer digital experiences that defy boundaries. Our team comprises
+        avant-garde web developers, creative coders, and UI/UX alchemists. We
+        specialize in pushing the limits of web technologies, harnessing the
+        power of shaders, JavaScript sorcery, and mind-bending UI interactions.
+      </p>
+    </section>
+    <section class="section section--four">
+      <p class="word">Wanna piss off other brands? Stay in touch with us</p>
+    </section>
+
+    <div class="header">
+      <div class="text-hover-effect">Interaction Studio</div>
+      <div class="text-hover-effect">@MARTIR_IO</div>
+      <div class="text-hover-effect">CONTACT@MARTIRIO.COM</div>
+    </div>
+
+    <div class="footer">
+      <div class="text-hover-effect">&#8595; Scroll down</div>
+      <div class="text-hover-effect">&#9878; Based in 3L R4V4L, BCN</div>
+    </div>
+
+    <div class="cursor">
+      <div class="cursor__inner">
+        <!-- cursor__inner-box elements come here -->
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+          <filter id="gooey">
+            <feGaussianBlur
+              in="SourceGraphic"
+              stdDeviation="10"
+              result="blur"
+            />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="
+					        1 0 0 0 0
+					        0 1 0 0 0
+					        0 0 1 0 0
+					        0 0 0 20 -7"
+              result="gooey"
+            />
+            <feMorphology
+              in="gooey"
+              operator="dilate"
+              radius="2"
+              result="outline"
+            />
+            <feComposite
+              in="outline"
+              in2="gooey"
+              operator="out"
+              result="composite"
+            />
+          </filter>
+        </defs>
+      </svg>
+    </div>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
