@@ -680,3 +680,17 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
 });
+
+/**
+ * Scroll Indicator
+ */
+const indicator = document.querySelector(".indicator");
+const percent = document.querySelector(".indicator-scroll");
+const documentHeight = document.documentElement.scrollHeight;
+const viewportHeight = document.documentElement.clientHeight;
+
+window.onscroll = function () {
+  let percentageScrolled = (scrollY / (documentHeight - viewportHeight)) * 100;
+  indicator.style.width = percentageScrolled + "%";
+  percent.innerHTML = indicator.style.width;
+};

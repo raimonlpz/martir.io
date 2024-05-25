@@ -47,8 +47,6 @@
   --color-link-hover: #fff;
   --cursor-bg: #ffffff;
   --cursor-blend-mode: exclusion;
-  --gradient-text-1: #aedfea;
-  --gradient-text-2: rgb(253 235 188);
 }
 
 * {
@@ -73,11 +71,24 @@ body {
   color: transparent;
   background-color: rgb(28, 28, 28);
   overflow-x: hidden;
+  scrollbar-width: none;
 }
 
 body {
   cursor: none;
   overflow: hidden !important;
+}
+
+#content {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+  overflow: -moz-scrollbars-none;
+}
+#content::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+::-webkit-scrollbar {
+  display: none;
 }
 
 .overlay {
@@ -123,6 +134,25 @@ body {
 .loading-bar.ended {
   transform-origin: top right;
   transition: transform 1.5s ease-in-out;
+}
+
+.indicator {
+  position: fixed;
+  bottom: 0;
+  left: 0px;
+  height: 3px;
+  width: 0px;
+  background-color: rgba(245, 245, 245, 0.812);
+}
+
+.indicator-scroll {
+  width: 40px;
+  position: fixed;
+  top: 50%;
+  right: 0.25rem;
+  color: rgba(245, 245, 245, 0.812);
+  font-family: Heming;
+  transform: rotate(-90deg);
 }
 
 a {
