@@ -9,12 +9,10 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
  * Loaders
  */
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-// import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 
 /**
- * Env Maps +   3D Libs
+ *  3D Libs
  */
-// import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 import { SimplexNoise } from "three/examples/jsm/math/SimplexNoise";
 
 /**
@@ -96,7 +94,7 @@ gltfLoader.load("/models/Latex_Gloves/scene.gltf", (gltf) => {
   gltf.scene.rotation.x = Math.PI * 2;
   gltf.scene.rotation.y = Math.PI / 2;
   _latexGloves = gltf.scene;
-  _latexGloves.position.y = -objectsDistance * 4;
+  _latexGloves.position.y = -objectsDistance * 5.5;
   sectionMeshes.push(_latexGloves);
   scene.add(_latexGloves);
 });
@@ -114,35 +112,6 @@ gltfLoader.load("/models/Latex_Mask/scene.gltf", (gltf) => {
 });
 
 gltfLoader.load("/models/Latex_Glass/scene.gltf", (gltf) => {
-  const model = gltf.scene;
-  model.traverse((node) => {
-    if (node.isMesh) {
-      const materials = Array.isArray(node.material)
-        ? node.material
-        : [node.material];
-      materials.forEach((material) => {
-        if (material) {
-          // Disable environment map influences
-          material.envMap = null;
-          material.envMapIntensity = 0;
-
-          // Additional properties for MeshStandardMaterial and MeshPhysicalMaterial
-          if (
-            material.isMeshStandardMaterial ||
-            material.isMeshPhysicalMaterial
-          ) {
-            material.reflectivity = 0; // Disable reflectivity
-            material.clearcoat = 0; // Disable clearcoat
-            material.clearcoatRoughness = 1; // Max roughness
-          }
-
-          // Ensure material properties are updated
-          material.needsUpdate = true;
-        }
-      });
-    }
-  });
-
   gltf.scene.scale.set(2.225, 2.225, 2.225);
   gltf.scene.position.x = 5;
   gltf.scene.position.y = 8;
@@ -344,8 +313,8 @@ const tick = () => {
 
   if (_latexGlass) {
     const dynamicRandomOffsetX = noise.noise3d(elapsedTime, 0, 0) * 0.05;
-    _latexGlass.rotation.x =
-      Math.cos(elapsedTime * 2) * 0.04 + dynamicRandomOffsetX;
+    _latexGlass.rotation.x = Math.cos(elapsedTime * 2) * 0.04;
+    +dynamicRandomOffsetX;
   }
 
   // Animate Camera
@@ -521,12 +490,42 @@ document.addEventListener("DOMContentLoaded", () => {
   // Ensure GSAP and ScrollTrigger are loaded
   gsap.registerPlugin(ScrollTrigger);
 
+  gsap.utils.toArray(".parallax-bg-rot").forEach((element) => {
+    gsap.to(element, {
+      y: (i, target) => {
+        return (1 - target.dataset.speed) * 100;
+      },
+      ease: "none",
+      scrollTrigger: {
+        trigger: element,
+        start: "top bottom", // when the top of the element hits the bottom of the viewport
+        end: "bottom top", // when the bottom of the element hits the top of the viewport
+        scrub: true,
+      },
+    });
+  });
+
   gsap.utils.toArray(".parallax-bg").forEach((element) => {
     gsap.to(element, {
       y: (i, target) => {
         return (1 - target.dataset.speed) * 100;
       },
       ease: "none",
+      scrollTrigger: {
+        trigger: element,
+        start: "top bottom", // when the top of the element hits the bottom of the viewport
+        end: "bottom top", // when the bottom of the element hits the top of the viewport
+        scrub: true,
+      },
+    });
+  });
+  gsap.utils.toArray(".parallax-bg-rot").forEach((element) => {
+    gsap.to(element, {
+      y: (i, target) => {
+        return (1 - target.dataset.speed) * 100;
+      },
+      ease: "none",
+      rotation: 30,
       scrollTrigger: {
         trigger: element,
         start: "top bottom", // when the top of the element hits the bottom of the viewport

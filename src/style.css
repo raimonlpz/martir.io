@@ -1,29 +1,42 @@
 @font-face {
   font-family: "Heming";
-  src: url("fonts/Heming.ttf") format("truetype");
-  font-weight: normal;
+  src: url("fonts/Unnamed-Light.eot");
+  src: url("fonts/Unnamed-Light.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Unnamed-Light.woff2") format("woff2"),
+    url("fonts/Unnamed-Light.woff") format("woff"),
+    url("fonts/Unnamed-Light.ttf") format("truetype"),
+    url("fonts/Unnamed-Light.svg#Unnamed-Light") format("svg");
+  font-weight: 300;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Lexa";
-  src: url("fonts/Lexa.otf");
+  src: url("fonts/Lexa.eot");
+  src: url("fonts/Lexa.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Lexa.woff2") format("woff2"),
+    url("fonts/Lexa.woff") format("woff"),
+    url("fonts/Lexa.ttf") format("truetype"),
+    url("fonts/Lexa.svg#Lexa") format("svg");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Colony";
-  src: url("fonts/Colony.otf");
+  src: url("fonts/TCNewWorthOneTrialVersion-Reg.eot");
+  src: url("fonts/TCNewWorthOneTrialVersion-Reg.eot?#iefix")
+      format("embedded-opentype"),
+    url("fonts/TCNewWorthOneTrialVersion-Reg.woff2") format("woff2"),
+    url("fonts/TCNewWorthOneTrialVersion-Reg.woff") format("woff"),
+    url("fonts/TCNewWorthOneTrialVersion-Reg.ttf") format("truetype"),
+    url("fonts/TCNewWorthOneTrialVersion-Reg.svg#TCNewWorthOneTrialVersion-Reg")
+      format("svg");
   font-weight: normal;
   font-style: normal;
-}
-
-@font-face {
-  font-family: "Swiss";
-  src: url("fonts/SwissGrit.otf");
-  font-weight: normal;
-  font-style: normal;
+  font-display: swap;
 }
 
 :root {
@@ -176,11 +189,122 @@ Section #2 - Home
   width: 30vw;
 }
 
+.section--two p span {
+  font-family: Colony;
+  display: block;
+  font-size: 4rem;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+.grid-container {
+  position: absolute;
+  bottom: 0;
+  opacity: 0.35;
+}
+
+.grid-container {
+  max-width: 65rem;
+  margin: 0 auto;
+  padding: 0 10%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  position: relative;
+  grid-template-rows: repeat(12, 1fr);
+}
+
+.grid__item--bg {
+  grid-column: 2 / span 9;
+  z-index: 0;
+  grid-row: 1 / -1;
+}
+
+.grid__item--portrait-half {
+  grid-column: 6 / span 6;
+  z-index: 2;
+  grid-row: 1 / -1;
+  clip-path: polygon(
+    5% 10%,
+    27% 3%,
+    94% 25%,
+    84% 98%,
+    39% 98%,
+    11% 98%,
+    4% 66%,
+    4% 34%
+  );
+}
+
+.grid__item--portrait-neck {
+  clip-path: polygon(5% 3%, 96% 4%, 95% 95%, 6% 95%, 20% 30%);
+  grid-column: 5 / span 4;
+  grid-row: 6 / 11;
+  z-index: 3;
+}
+
+.grid__item--portrait-left {
+  clip-path: polygon(10% 19%, 93% 15%, 90% 88%, 13% 92%);
+  grid-column: 2 / span 4;
+  grid-row: 6 / 12;
+  z-index: 4;
+}
+
+.grid__item--portrait-eye {
+  clip-path: polygon(4% 13%, 84% 12%, 86% 34%, 80% 45%, 80% 76%, 10% 79%);
+  grid-column: 4 / span 2;
+  grid-row: 3 / 5;
+  z-index: 5;
+  width: 82%;
+  justify-self: end;
+}
+
+.grid__item--portrait-shirt {
+  clip-path: polygon(3% 2%, 50% 25%, 97% 100%, 97% 100%, 3% 98%);
+  grid-column: 1 / span 2;
+  grid-row: 11 / -1;
+  z-index: 6;
+}
+
+.grid__item--portrait-bg-1 {
+  clip-path: polygon(14% 13%, 84% 12%, 86% 34%, 90% 66%, 30% 76%, 10% 79%);
+  grid-column: 1 / span 2;
+  grid-row: 1 / 4;
+  z-index: 8;
+}
+
+.grid__item--portrait-bg-2 {
+  clip-path: polygon(9% 4%, 80% 0%, 100% 100%, 0% 100%);
+  grid-column: 11 / -1;
+  grid-row: 2 / 7;
+  z-index: 8;
+}
+
+.grid__item--portrait-bg-3 {
+  clip-path: polygon(9% 4%, 80% 0%, 100% 100%, 0% 100%);
+  grid-column: 1 / span 3;
+  grid-row: 4 / 7;
+  z-index: 4;
+}
+
+.grid__item--portrait-bg-4 {
+  clip-path: polygon(5% 4%, 94% 3%, 97% 96%, 13% 96%);
+  grid-column: 10 / 12;
+  grid-row: 1 / 6;
+  z-index: 1;
+}
+
 /**
 Section #3 - Home
 */
 .section--three {
   height: 200vw;
+  position: relative;
 }
 
 .section--three p {
