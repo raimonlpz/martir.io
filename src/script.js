@@ -224,8 +224,9 @@ cameraGroup.add(camera);
 // Controls
 const controls = new OrbitControls(camera, canvas);
 controls.target.set(0, 0.75, 0);
-controls.enableDamping = true;
+controls.enableDamping = false;
 controls.enabled = false;
+camera.lookAt(controls.target);
 
 // Fog
 scene.fog = new THREE.Fog("rgb(28, 28, 28)", 1.3, 2.1);
@@ -236,7 +237,7 @@ scene.fog = new THREE.Fog("rgb(28, 28, 28)", 1.3, 2.1);
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
   antialias: true,
-  powerPreference: "high-performance",
+  // powerPreference: "high-performance",
 });
 renderer.setClearColor("rgb(28, 28, 28)");
 renderer.shadowMap.enabled = false;
@@ -373,7 +374,8 @@ const tick = () => {
   }
 
   // Update controls
-  controls.update();
+  // controls.update();
+  camera.lookAt(controls.target);
 
   // Render
   renderer.render(scene, camera);
@@ -386,11 +388,31 @@ tick();
 /**
  * Sound
  */
+let audioEl, audioUx;
 document.addEventListener("DOMContentLoaded", (event) => {
-  const audioEl = new Audio("/sound/grips.mp3");
+  audioEl = new Audio("/sound/grips.mp3");
+  audioUx = new Audio("/sound/hud.mp3");
   audioEl.play();
-  audioEl.volume = 1;
+  audioEl.volume = 0.25;
   audioEl.loop = true;
+});
+
+document.querySelectorAll(".text-hover-effect").forEach((el) => {
+  el.addEventListener("mouseover", () => {
+    audioUx.pause();
+    audioUx.play();
+    audioUx.volume = 0.8;
+    const fadeOut = () => {
+      if (audioUx.volume > 0) {
+        // only if we're not yet at 0
+        setTimeout(function () {
+          if (audioUx.volume > 0.2) audioUx.volume -= 0.2;
+          fadeOut(audioUx); // do it again after one second
+        }, 1000);
+      }
+    };
+    fadeOut();
+  });
 });
 
 /**
