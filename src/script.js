@@ -290,8 +290,24 @@ const screenPass = new UnrealBloomPass();
 screenPass.strength = 0.3;
 screenPass.radius = 1;
 screenPass.threshold = 0.6;
-screenPass.enabled = false;
 effectComposer.addPass(screenPass);
+
+/**
+ * Theme
+ */
+let theme = "dark";
+const themeSwitch = document.getElementById("theme-switch");
+screenPass.enabled = theme === "light";
+
+themeSwitch.addEventListener("click", () => {
+  if (theme === "dark") {
+    screenPass.enabled = true;
+    theme = "light";
+  } else {
+    screenPass.enabled = false;
+    theme = "dark";
+  }
+});
 
 /**
  * Raycaster
@@ -318,7 +334,6 @@ const particleTexture = textureLoader.load("/textures/particles/5.png");
 /**
  * Particles
  */
-// const particlesGeometry = new THREE.SphereGeometry(1, 32, 32);
 const particlesGeometry = new THREE.BufferGeometry();
 const count = 1000;
 const positions = new Float32Array(count * 3);
@@ -333,6 +348,8 @@ particlesGeometry.setAttribute(
 const particlesMaterial = new THREE.PointsMaterial({
   size: 0.05,
   sizeAttenuation: true,
+  color: 0x888888,
+  fog: true,
 });
 // particlesMaterial.map = particleTexture;
 particlesMaterial.vertexColors = true;
