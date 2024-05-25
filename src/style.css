@@ -13,6 +13,13 @@
 }
 
 @font-face {
+  font-family: "Colony";
+  src: url("fonts/Colony.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "Swiss";
   src: url("fonts/SwissGrit.otf");
   font-weight: normal;
@@ -48,7 +55,7 @@ html {
 html,
 body {
   /* overflow: hidden; */
-  font-family: Lexa;
+  font-family: Colony;
   color: transparent;
   background-color: rgb(28, 28, 28);
   overflow-x: hidden;
@@ -112,6 +119,11 @@ Section #1 - Home
   text-align: center;
 }
 
+.letters div span {
+  font-family: Lexa;
+  font-size: 7vw;
+}
+
 .section--one span {
   /* font-family: Heming;
   font-size: 140px; */
@@ -122,6 +134,7 @@ Section #2 - Home
 */
 .section--two {
   height: 200vw;
+  position: relative;
 }
 .section--two p {
   color: white;
@@ -188,8 +201,16 @@ Section #4 - Home
   opacity: 0.75;
   text-align: justify;
   align-self: end;
-  margin-bottom: 50vh;
+  margin-bottom: 45vh;
 }
+
+.section--four p span {
+  display: block;
+  font-size: 4rem;
+  font-family: Colony;
+  align-self: center;
+}
+
 /**
 Header
 */

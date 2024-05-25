@@ -500,16 +500,23 @@ window.setInterval(function () {
  * Text Animation
  */
 document.addEventListener("DOMContentLoaded", () => {
-  gsap.to(".parallax-bg", {
-    scrollTrigger: {
-      scrub: 1,
-    },
-    y: (i, target) => 1 * target.dataset.speed,
-    ease: "none",
-  });
-
   // Ensure GSAP and ScrollTrigger are loaded
   gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray(".parallax-bg").forEach((element) => {
+    gsap.to(element, {
+      y: (i, target) => {
+        return (1 - target.dataset.speed) * 100;
+      },
+      ease: "none",
+      scrollTrigger: {
+        trigger: element,
+        start: "top bottom", // when the top of the element hits the bottom of the viewport
+        end: "bottom top", // when the bottom of the element hits the top of the viewport
+        scrub: true,
+      },
+    });
+  });
 
   // Initialize SplitType for all text elements
   document.querySelectorAll(".word").forEach((textElement) => {
