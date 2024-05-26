@@ -69,6 +69,7 @@ scene.add(overlay);
 /**
  * Hide HTML DOM elements
  */
+const loadingPElBg = document.querySelector(".loading-progress-bg");
 const loadingPEl = document.querySelector(".loading-progress");
 const loadingBarEl = document.querySelector(".loading-bar");
 const overlayDOM = document.querySelector(".overlay");
@@ -84,6 +85,7 @@ const loadingManager = new THREE.LoadingManager(
         .to(overlayMaterial.uniforms.uAlpha, { duration: 1, value: 0 })
         .then(() => {
           loadingPEl.classList.add("ended");
+          loadingPElBg.classList.add("ended");
           loadingBarEl.classList.add("ended");
           loadingBarEl.style.transform = "";
 
