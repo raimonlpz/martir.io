@@ -463,6 +463,12 @@ Header
   pointer-events: auto;
 }
 
+@media screen and (max-width: 768px) {
+  .contact {
+    display: none;
+  }
+}
+
 /**
 Footer
 */
@@ -489,6 +495,12 @@ Footer
   width: 33.3333%;
 }
 
+@media screen and (max-width: 768px) {
+  .header div {
+    width: 50%;
+  }
+}
+
 .header div:nth-child(1) {
   text-align: start;
 }
@@ -497,6 +509,12 @@ Footer
 }
 .header div:nth-child(3) {
   text-align: end;
+}
+
+@media screen and (max-width: 768px) {
+  .header div:nth-child(2) {
+    text-align: end;
+  }
 }
 
 .text-hover-effect:hover {

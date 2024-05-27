@@ -694,5 +694,5 @@ const viewportHeight = document.documentElement.clientHeight;
 window.onscroll = function () {
   let percentageScrolled = (scrollY / (documentHeight - viewportHeight)) * 100;
   indicator.style.width = percentageScrolled + "%";
-  percent.innerHTML = indicator.style.width;
+  percent.innerHTML = "[" + indicator.style.width + "]";
 };
