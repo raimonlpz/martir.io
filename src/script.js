@@ -152,14 +152,14 @@ gltfLoader.load("/models/Latex_Sunglasses/scene-min.gltf", (gltf) => {
   scene.add(_latexSunglasses);
 });
 
-gltfLoader.load("/models/Latex_Gloves/scene.gltf", (gltf) => {
-  gltf.scene.scale.set(4.25, 4.25, 4.25);
-  gltf.scene.position.x = 0;
+gltfLoader.load("/models/Spore/scene.glb", (gltf) => {
+  gltf.scene.scale.set(0.6, 0.6, 0.6);
+  gltf.scene.position.x = 1.35;
   gltf.scene.position.z = 1.35;
   gltf.scene.rotation.x = Math.PI * 2;
   gltf.scene.rotation.y = Math.PI / 2;
   _latexGloves = gltf.scene;
-  _latexGloves.position.y = -objectsDistance * 5.5;
+  _latexGloves.position.y = -objectsDistance * 2.5;
   scene.add(_latexGloves);
 });
 
