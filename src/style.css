@@ -260,6 +260,13 @@ Section #2 - Home
   height: 200vw;
   position: relative;
 }
+
+@media screen and (max-width: 768px) {
+  .section--two {
+    height: 600vw;
+  }
+}
+
 .section--two p {
   color: white;
   font-size: 0.75rem;
@@ -402,6 +409,12 @@ Section #3 - Home
   position: relative;
 }
 
+@media screen and (max-width: 768px) {
+  .section--three {
+    height: 600vw;
+  }
+}
+
 .section--three p {
   color: white;
   font-size: 0.75rem;
@@ -426,6 +439,12 @@ Section #4 - Home
 */
 .section--four {
   height: 150vw;
+}
+
+@media screen and (max-width: 768px) {
+  .section--four {
+    height: 500vw;
+  }
 }
 
 .section--four p {
