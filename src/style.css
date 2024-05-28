@@ -261,7 +261,7 @@ Section #2 - Home
   position: relative;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 568px) {
   .section--two {
     height: 600vw;
   }
@@ -409,7 +409,7 @@ Section #3 - Home
   position: relative;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 568px) {
   .section--three {
     height: 600vw;
   }
@@ -441,7 +441,7 @@ Section #4 - Home
   height: 150vw;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 568px) {
   .section--four {
     height: 500vw;
   }
