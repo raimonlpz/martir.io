@@ -112,7 +112,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 1.3rem;
-  font-family: Heming;
+  font-family: Heming, sans-serif;
   font-weight: 100;
   color: #ffffff69;
   transition: opacity 0.5s;
