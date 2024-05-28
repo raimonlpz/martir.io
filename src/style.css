@@ -478,7 +478,7 @@ Header
   top: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
-  color: whitesmoke;
+  color: rgba(245, 245, 245, 0.812);
   pointer-events: auto;
 }
 
@@ -499,7 +499,7 @@ Footer
   bottom: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
-  color: whitesmoke;
+  color: rgba(245, 245, 245, 0.812);
   pointer-events: auto;
 }
 
