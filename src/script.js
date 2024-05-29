@@ -268,7 +268,8 @@ scene.fog = new THREE.Fog("rgb(28, 28, 28)", 1.3, 2.1);
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
   antialias: false,
-  // powerPreference: "high-performance",
+  precision: "lowp", //highp", "mediump" or "lowp"
+  powerPreference: "low-power",
 });
 renderer.setClearColor("rgb(28, 28, 28)");
 renderer.shadowMap.enabled = false;
@@ -397,9 +398,7 @@ const tick = () => {
   }
 
   if (_latexGlass) {
-    const dynamicRandomOffsetX = noise.noise3d(elapsedTime, 0, 0) * 0.05;
     _latexGlass.rotation.x = Math.cos(elapsedTime * 2) * 0.04;
-    +dynamicRandomOffsetX;
   }
 
   // Animate Camera
