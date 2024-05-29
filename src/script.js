@@ -174,7 +174,7 @@ gltfLoader.load("/models/Latex_Mask/scene-min.gltf", (gltf) => {
   scene.add(_latexMask);
 });
 
-gltfLoader.load("/models/Latex_Glass/scene-min.gltf", (gltf) => {
+gltfLoader.load("/models/Latex_Glass/scene-min.glb", (gltf) => {
   gltf.scene.scale.set(2.225, 2.225, 2.225);
   gltf.scene.position.x = 5;
   gltf.scene.position.y = 8;
@@ -275,7 +275,7 @@ renderer.setClearColor("rgb(28, 28, 28)");
 renderer.shadowMap.enabled = false;
 // renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setSize(sizes.width, sizes.height);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1));
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.toneMapping = THREE.NoToneMapping;
 renderer.toneMappingExposure = 1;
