@@ -150,6 +150,14 @@ gltfLoader.load("/models/Latex_Sunglasses/scene-min.gltf", (gltf) => {
   _latexSunglasses = gltf.scene;
   _latexSunglasses.position.y = -objectsDistance * 0 + 1;
   scene.add(_latexSunglasses);
+  /**
+   *   _latexSunglasses.traverse((node) => {
+    if (node.isMesh && node.name.includes("green")) {
+      console.log(node.material);
+      node.material = videoMaterial;
+    }
+  });
+   */
 });
 
 gltfLoader.load("/models/Spore/scene.glb", (gltf) => {
