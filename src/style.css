@@ -54,6 +54,18 @@ body {
   font-weight: 100;
 }
 
+.projects {
+  margin-top: 70px;
+  font-weight: 100;
+}
+
+.projects a {
+  margin: 10px;
+  font-size: 12px;
+  display: block;
+  color: white;
+}
+
 
 .footer {
   color: rgb(236, 236, 236);
