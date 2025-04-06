@@ -16,18 +16,17 @@
   box-sizing: border-box;
 }
 
-
-::-webkit-scrollbar {
-  display: none;
+html {
+  scroll-behavior: smooth;
 }
+
 
 html,
 body {
   font-family: sans-serif;
   color: transparent;
   background-color: rgb(10, 10, 10);
-  overflow-x: hidden;
-  scrollbar-width: none;
+  overflow: hidden;
 }
 
 .content {
