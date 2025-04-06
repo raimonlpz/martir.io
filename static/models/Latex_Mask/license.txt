@@ -1,8 +1,0 @@
-Model Information:
-* title:	Latex mask
-* source:	https://sketchfab.com/3d-models/latex-mask-83e0764a64ee4a0694a24b8bda3491ac
-* author:	4145K4N (https://sketchfab.com/4145K4N)
-
-Model License:
-* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
-* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

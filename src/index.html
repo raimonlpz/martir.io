@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Martirio — Interaction Studio</title>
+    <title>Martirio — User Interfaces</title>
     <meta name="title" content="Martirio — Interaction Studio" />
     <meta
       name="description"
@@ -66,127 +66,21 @@
     <link rel="manifest" href="/imgs/site.webmanifest" />
     <link rel="icon" type="image/x-icon" href="/imgs/favicon.ico" />
   </head>
-  <body id="content">
-    <canvas class="webgl"></canvas>
-    <section class="section section--one">
-      <div class="letters">
-        <div>M</div>
-        <div><span>a</span></div>
-        <div>r</div>
-        <div>t</div>
+  <body>
+    <div class="content">
+      <div class="title">
+        <h1 class="">
+          martirio &copy;
+        </h1>
+        <h1 class="">
+          мученичество
+        </h1>
+        <h1 class="">
+          شهادت
+        </h1>
       </div>
-      <div class="letters">
-        <div>i</div>
-        <div>r</div>
-        <div><span>i</span></div>
-        <div><span>o</span></div>
-      </div>
-    </section>
 
-    <section class="section section--two">
-      <p class="word parallax-bg" data-speed="0.5">
-        <span>.</span> <br />
-        Infinite Code Machines
-      </p>
-      <p class="word parallax-bg" data-speed="2.5">
-        <span>.</span> <br />
-        Web Accelerationists
-      </p>
-
-      <p class="word parallax-bg" data-speed="8.5">
-        <span>.</span> <br />
-        Lysergic UX/UI Design
-      </p>
-    </section>
-
-    <section class="section section--three">
-      <p class="word parallax-bg" data-speed="0.5">
-        Welcome to our CRYPTIC WORLD, where pixels dance to the rhythm of code,
-        and user interfaces transcend the mundane. We are <i>Martirio</i>,
-        pioneers of web accelerationism, sculptors of lysergic user experiences,
-        and architects of infinite code machines.
-      </p>
-      <p class="word parallax-bg" data-speed="5">
-        We engineer digital experiences that defy boundaries. Our team comprises
-        avant-garde web developers, creative coders, and UI/UX alchemists. We
-        specialize in pushing the limits of web technologies, harnessing the
-        power of shaders, JavaScript sorcery, and mind-bending UI interactions.
-      </p>
-    </section>
-    <section class="section section--four">
-      <p class="word parallax-bg" data-speed="0.5">
-        Wanna piss off other brands? Stay in touch with us <br /><span
-          >Adeu!</span
-        >
-      </p>
-    </section>
-
-    <div class="header">
-      <div class="">
-        <a class="text-hover-effect" href="#">[ Interaction Studio ]</a>
-      </div>
-      <div class="text-hover-effect" id="theme-switch">[ Light / Dark ]</div>
-      <div class="text-hover-effect contact">[ STUDIO.MARTIRIO@GMAIL.COM ]</div>
+      <div class="footer">2025. All rights reserved &copy;</div>
     </div>
-
-    <div class="footer">
-      <div class="text-hover-effect">[ &#8595; Scroll down ]</div>
-      <div class="">
-        <a
-          class="text-hover-effect"
-          href="https://es.wikipedia.org/wiki/El_Raval"
-          target="_blank"
-          >[ Based in 3L R4V4L, BCN ]</a
-        >
-      </div>
-    </div>
-
-    <div class="cursor">
-      <div class="cursor__inner"></div>
-      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <defs>
-          <filter id="gooey">
-            <feGaussianBlur
-              in="SourceGraphic"
-              stdDeviation="10"
-              result="blur"
-            />
-            <feColorMatrix
-              in="blur"
-              mode="matrix"
-              values="
-					        1 0 0 0 0
-					        0 1 0 0 0
-					        0 0 1 0 0
-					        0 0 0 20 -7"
-              result="gooey"
-            />
-            <feMorphology
-              in="gooey"
-              operator="dilate"
-              radius="2"
-              result="outline"
-            />
-            <feComposite
-              in="outline"
-              in2="gooey"
-              operator="out"
-              result="composite"
-            />
-          </filter>
-        </defs>
-      </svg>
-    </div>
-
-    <div class="indicator-scroll">[0%]</div>
-    <div class="indicator"></div>
-
-    <div class="overlay"></div>
-
-    <div class="loading-progress-bg"><img src="/imgs/wire.png" alt="" /></div>
-    <div class="loading-progress">0%</div>
-    <div class="loading-bar"></div>
-
-    <script type="module" src="./script.js"></script>
   </body>
 </html>
